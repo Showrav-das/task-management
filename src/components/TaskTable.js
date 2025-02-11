@@ -6,6 +6,7 @@ export default function TaskTable({
   handleEditModal,
   tasks,
   handleDeleteModal,
+  handleViewModal,
 }) {
   return (
     <div className="mt-8 flow-root">
@@ -69,7 +70,7 @@ export default function TaskTable({
                         <Eye className="size-4" />
                       </button>
                       <button
-                        onClick={() => setOpen(true)}
+                        onClick={() => handleViewModal(task._id)}
                         type="button"
                         className="block rounded-md  py-2 text-center text-sm font-semibold text-gray-500 shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
                       >

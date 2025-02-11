@@ -36,10 +36,6 @@ export default function page() {
     );
   };
 
-  // const handleDeleteModal = (id) => {
-  //   console.log("delete id", id);
-  // };
-
   const handleDeleteModal = async (taskId) => {
     try {
       const response = await fetch(`http://localhost:5000/tasks/${taskId}`, {
@@ -60,6 +56,16 @@ export default function page() {
   const handleEditModal = (task) => {
     setSelectedTask(task);
     setOpenEditModal(true);
+  };
+
+  const handleViewModal = async (taskId) => {
+    console.log("task", taskId);
+    try {
+      const response = await fetch(`http://localhost:5000/tasks/${taskId}`);
+      console.log("res", response);
+    } catch (error) {
+      console.log("Error viewing task");
+    }
   };
 
   return (
@@ -90,6 +96,7 @@ export default function page() {
           handleEditModal={handleEditModal}
           tasks={tasks}
           handleDeleteModal={handleDeleteModal}
+          handleViewModal={handleViewModal}
         />
         {open && <Modal open={open} setOpen={setOpen} />}
         {openEditModal && selectedTask && (
